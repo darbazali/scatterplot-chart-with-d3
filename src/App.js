@@ -68,21 +68,26 @@ const parseTimeYear = d3.timeParse("%Y");
     TOOLTIP DRAWER FUNCTION
 ===================================================*/
 const drawTooltip = (d, tooltip) => {
+
   tooltip
-    .style('opacity', 1)
-    .style('left', `${d3.event.layerX - 70}px`)
-    .style('top', `${d3.event.layerY - 20}px`)
+    .style('opacity', '0.9')
+    .style('left', `${d3.event.layerX }px`)
+    .style('top', `${d3.event.layerY - 110}px`)
 
     .attr('data-year', d["Year"])
 
-    .text( () => {
+    .html( () => {
       let rider = d["Name"];
       let country = d["Nationality"];
       let year = d["Year"].getFullYear();
       let time = d["Time"].getMinutes() + ":" + d["Time"].getSeconds();
       let doping = d["Doping"]
 
-      return `${rider}: ${country} \n Year: ${year}, Time: ${time} \n ${doping}`
+      return `
+        <b>${rider}: ${country}</b> <br/>
+        Year: <b>${year}</b>, Time: <b>${time}</b><br/><br/>
+        ${doping}
+      `
     })
 }
 
@@ -168,7 +173,7 @@ const drawScatterplot = data => {
     // coordinations
     .attr('cx', d => xScale(d["Year"]))
     .attr('cy', d => yScale(d["Time"]))
-    .attr('r', 5)
+    .attr('r', 6)
 
     // css attributes
     .attr('class', 'dot')

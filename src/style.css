@@ -6,6 +6,79 @@ body {
 }
 
 
-#tooltip {
+#container {
+    width: 80vw;
+    max-width: 1100px;
+    padding: 1rem;
+    margin: 3rem auto;
+    background-color: #F8F8F8;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.116);
+    position: relative;
+}
+
+#container h2#title {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+
+#container div#tooltip {
+    position: absolute;
     opacity: 0;
+    border-radius: 5px;
+    background: #abc6bd;
+    font-weight: normal;
+    font-size: 0.9rem;
+    text-align: left;
+    color: #000;
+    pointer-events: none;
+    padding: 1rem;
+}
+
+#container #legend {
+    position: absolute;
+    right: 0;
+    padding: 1rem;
+}
+
+#container #legend ul {
+    list-style: none;
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+#container #legend ul li {
+    height: 20px;
+    padding: 5px 0;
+    font-size: 1rem;
+}
+
+#container #legend ul li::after {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-left: 0.8rem;
+}
+
+#container #legend ul li:nth-child(1)::after {
+    background-color: #EF8536;
+}
+
+#container #legend ul li:nth-child(2)::after {
+    background-color: #3A76AF;
+}
+
+
+.dot {
+    opacity: 0.9;
+}
+
+@media ( max-width: 760px ) {
+    #container h2#title {
+        font-size: 1rem;
+    }
 }
