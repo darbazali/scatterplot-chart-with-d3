@@ -1,3 +1,13 @@
+import * as d3 from 'd3'
+
+// select target node
+const container = d3.select('#container');
+
+// create title
+container
+  .append('h2')
+  .attr('id', 'title')
+  .text('Doping in Professional Bicycle Racing')
 
 
 
