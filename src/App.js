@@ -9,6 +9,33 @@ container
   .attr('id', 'title')
   .text('Doping in Professional Bicycle Racing')
 
+// define margins
+const margin = {
+  top: 20,
+  right: 20,
+  bottom: 20,
+  left: 60
+}
+
+// define dimentions
+const width = 800 - margin.right - margin.left;
+const height = 400 - margin.top - margin.bottom;
+
+
+// create the canvas
+const canvas = container
+  .append('svg')
+  .attr('viewBox', `0 0 ${ width + margin.left + margin.right} ${height + margin.top + margin.bottom}`);
+
+// create a group for svg elements
+const svgGroups = canvas
+  .append('g')
+  .attr('transform', `translate(${margin.left}, ${margin.top})`)
+
+
+
+ 
+
 
 
 
