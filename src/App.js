@@ -49,13 +49,15 @@ const parseTimeRecord = d3.timeParse("%M:%S");
 const parseTimeYear = d3.timeParse("%Y");
 
 
-
-
-
-
-
+// scatterplot drawer function
 const drawScatterplot = data => {
-  return
+  // format time
+  data.forEach(item => {
+    item["Time"] = parseTimeRecord(item["Time"]);
+    item["Year"] = parseTimeYear(item["Year"]);
+  });
+
+
 }
 
 
