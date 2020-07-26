@@ -34,7 +34,16 @@ const svgGroups = canvas
 
 
 
- 
+//  define scales
+const xScale = d3
+  .scaleTime()
+  .range([0, width]);
+
+const yScale = d3
+  .scaleTime()
+  .range([0, height])
+
+  
 
 
 
