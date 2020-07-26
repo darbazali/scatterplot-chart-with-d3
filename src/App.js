@@ -9,6 +9,22 @@ container
   .attr('id', 'title')
   .text('Doping in Professional Bicycle Racing')
 
+
+/*==================================================
+    CREATE LEGEND
+===================================================*/
+const legend = container
+  .append('dvi')
+  .attr('id', 'legend')
+
+const list = legend.append('ul');
+list.append('li')
+  .text("Doping Allegations");
+
+list.append('li')
+  .text('No Doping Allegations')
+
+
 // define margins
 const margin = {
   top: 20,
