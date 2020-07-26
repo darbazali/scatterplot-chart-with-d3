@@ -66,6 +66,18 @@ const drawScatterplot = data => {
   const yAxis = d3.axisLeft(yScale)
     .tickFormat(d3.timeFormat("%M:%S"));
 
+  // Append Axes to the group
+  svgGroups
+    .append('g')
+    .attr('id', 'x-axis')
+    .attr('transform', `translate(0, ${height})`)
+    .call(xAxis)
+
+  svgGroups
+    .append('g')
+    .attr('id', 'y-axis')
+    .call(yAxis)
+
   
 }
 
