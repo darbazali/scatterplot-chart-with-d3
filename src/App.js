@@ -43,7 +43,11 @@ const yScale = d3
   .scaleTime()
   .range([0, height])
 
-  
+
+// define time formatters
+const parseTimeRecord = d3.timeParse("%M:%S");
+const parseTimeYear = d3.timeParse("%Y");
+
 
 
 
