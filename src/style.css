@@ -6,9 +6,6 @@ body {
 }
 
 
-#root {
-    width: 90%;
-    margin: 0 auto;
-    background-color: rgb(241, 241, 241);
-    padding: 40px;
+#tooltip {
+    opacity: 0;
 }

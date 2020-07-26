@@ -48,8 +48,42 @@ const yScale = d3
 const parseTimeRecord = d3.timeParse("%M:%S");
 const parseTimeYear = d3.timeParse("%Y");
 
+/*==================================================
+    TOOLTIP DRAWER FUNCTION
+===================================================*/
+const drawTooltip = (d, tooltip) => {
+  tooltip
+    .style('opacity', 1)
+    .style('left', `${d3.event.layerX - 70}px`)
+    .style('top', `${d3.event.layerY - 20}px`)
 
-// scatterplot drawer function
+    .attr('data-year', d["Year"])
+
+    .text( () => {
+      let rider = d["Name"];
+      let country = d["Nationality"];
+      let year = d["Year"].getFullYear();
+      let time = d["Time"].getMinutes() + ":" + d["Time"].getSeconds();
+      let doping = d["Doping"]
+
+      return `${rider}: ${country} \n Year: ${year}, Time: ${time} \n ${doping}`
+    })
+}
+
+/* 
+  "Time": "36:50",
+    "Place": 1,
+    "Seconds": 2210,
+    "Name": "Marco Pantani",
+    "Year": 1995,
+    "Nationality": "ITA",
+    "Doping": "Alleged drug use during 1995 due to high hematocrit levels",
+    "URL": "https://en.wikipedia.org/wiki/Marco_Pantani#Alleged_drug_use
+*/
+
+/*==================================================
+    PLOT DRAWER FUNCTION
+===================================================*/
 const drawScatterplot = data => {
   // format time
   data.forEach(item => {
@@ -66,7 +100,12 @@ const drawScatterplot = data => {
   const yAxis = d3.axisLeft(yScale)
     .tickFormat(d3.timeFormat("%M:%S"));
 
-  // Append Axes to the group
+
+
+
+  /*==================================================
+    APPEND AXES TO THE GROUP
+  ===================================================*/
   svgGroups
     .append('g')
     .attr('id', 'x-axis')
@@ -78,12 +117,33 @@ const drawScatterplot = data => {
     .attr('id', 'y-axis')
     .call(yAxis)
 
-  // Plot dots
+
+
+
+  /*==================================================
+    CREATE TOOLTIP
+  ===================================================*/
+  const tooltip = container
+    .append('div')
+    .attr('id', 'tooltip')
+
+
+
+  /*==================================================
+    PLOT DOTS
+  ===================================================*/
   svgGroups
     .selectAll('circle')
     .data(data)
     .enter()
     .append('circle')
+
+    // events for tooltip
+    .on('mouseenter', d => drawTooltip(d, tooltip))
+    .on('mouseout', () => {
+      tooltip
+        .style('opacity', 0)
+    })
 
     // data values
     .attr('data-xvalue', d => d["Year"])
