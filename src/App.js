@@ -61,6 +61,11 @@ const drawScatterplot = data => {
   xScale.domain( d3.extent( data, d => d["Year"]));
   yScale.domain( d3.extent( data, d => d["Time"]));
 
+  // creat Axes
+  const xAxis = d3.axisBottom(xScale)
+  const yAxis = d3.axisLeft(yScale)
+    .tickFormat(d3.timeFormat("%M:%S"));
+
   
 }
 
