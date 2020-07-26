@@ -57,7 +57,11 @@ const drawScatterplot = data => {
     item["Year"] = parseTimeYear(item["Year"]);
   });
 
+  // define domains
+  xScale.domain( d3.extent( data, d => d["Year"]));
+  yScale.domain( d3.extent( data, d => d["Time"]));
 
+  
 }
 
 
