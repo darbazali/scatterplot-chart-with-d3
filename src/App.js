@@ -78,7 +78,26 @@ const drawScatterplot = data => {
     .attr('id', 'y-axis')
     .call(yAxis)
 
-  
+  // Plot dots
+  svgGroups
+    .selectAll('circle')
+    .data(data)
+    .enter()
+    .append('circle')
+
+    // data values
+    .attr('data-xvalue', d => d["Year"])
+    .attr('data-yvalue', d => d["Time"])
+
+    // coordinations
+    .attr('cx', d => xScale(d["Year"]))
+    .attr('cy', d => yScale(d["Time"]))
+    .attr('r', 5)
+
+    // css attributes
+    .attr('class', 'dot')
+    .attr('fill', d => (d["Doping"] == "" ? "#EF8536" : "#3A76AF" ))
+
 }
 
 
